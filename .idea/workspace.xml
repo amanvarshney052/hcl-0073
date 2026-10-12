@@ -40,22 +40,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.instance_count.executor&quot;: &quot;Run&quot;,
-    &quot;Application.practice.executor&quot;: &quot;Run&quot;,
-    &quot;Application.super_keyword.executor&quot;: &quot;Run&quot;,
-    &quot;Application.teacher.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/aman varshney/Desktop/hcl_training&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/aman varshney/Desktop/hcl_training/src/Main.java&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.instance_count.executor": "Run",
+    "Application.practice.executor": "Run",
+    "Application.super_keyword.executor": "Run",
+    "Application.teacher.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/aman varshney/Desktop/hcl_training",
+    "onboarding.tips.debug.path": "C:/Users/aman varshney/Desktop/hcl_training/src/Main.java"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="hcl_training" />
