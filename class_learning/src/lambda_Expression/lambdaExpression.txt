@@ -1,0 +1,38 @@
+A lambda expression is a concise way to provide an implementation of a functional interface without writing an entire anonymous inner class.
+In simple words, it allows you to write behavior as a short piece of code and pass that behavior to a method or store it in a functional-interface variable.
+
+
+Built-in functional interfaces in Java
+Java provides ready-made functional interfaces in java.util.function, so you don't have to create a custom interface for every operation.
+
+1. Predicate<T>
+Takes input and returns boolean.
+Predicate<Integer> even = n -> n % 2 == 0;
+System.out.println(even.test(10)); // true
+
+
+2. Function<T, R>
+Takes input and returns a result.
+Function<Integer, Integer> square = n -> n * n;
+System.out.println(square.apply(5)); // 25
+
+
+3. Consumer<T>
+Takes input and performs an action without returning a result.
+Consumer<String> print = s -> System.out.println(s);
+print.accept("Hello Java");
+
+
+4. Supplier<T>
+Returns a value without taking an input.
+Supplier<Double> random = () -> Math.random();
+System.out.println(random.get());
+
+
+5. BiFunction<T, U, R>
+Takes two inputs and returns a result.
+BiFunction<Integer, Integer, Integer> sum = (a, b) -> a + b;
+System.out.println(sum.apply(4, 6)); // 10
+
+
+Other useful interfaces include BiPredicate<T, U>, BiConsumer<T, U>, UnaryOperator<T>, and BinaryOperator<T>.

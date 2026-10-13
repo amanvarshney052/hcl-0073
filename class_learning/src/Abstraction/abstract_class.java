@@ -10,11 +10,11 @@ package Abstraction;
 // we can not create object of abstract class
 
 public class abstract_class {
-    abstract class A{
+    static abstract class A{
         abstract void m1();
         abstract void m2(int a);
     }
-    class B extends A{
+    static class B extends A{
         @Override
         void m1(){
             System.out.println("Print M1!!!!!");
@@ -25,7 +25,7 @@ public class abstract_class {
         }
     }
 
-    public  void main(String[] args) {
+    public static void main(String[] args) {
         B b=new B();
         b.m1();
         b.m2(83);

@@ -12,19 +12,19 @@ public class interface_ {
     interface payment{
         void pay();
     }
-    class upipay implements payment{
+    static class upipay implements payment{
         @Override
         public void pay(){
             System.out.println("Paymemt by UPI");
         }
     }
-    class card implements payment {
+    static class card implements payment {
         @Override
         public void pay(){
             System.out.println("Payment by CARD");
         }
     }
-    public void main(String[] args){
+    public static void main(String[] args){
         card c=new card();
         c.pay();
         upipay u=new upipay();

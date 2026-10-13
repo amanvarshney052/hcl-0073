@@ -7,7 +7,7 @@ public class MultiInheritance_Interface {
     interface B{
         void callB();
     }
-    class c implements A,B{
+    static class c implements A,B{
 
         @Override
         public void callA() {
@@ -19,7 +19,7 @@ public class MultiInheritance_Interface {
             System.out.println("B is caled");
         }
     }
-    public void main(String []args){
+    public static void main(String[] args){
         c c1=new c();
         c1.callA();
         c1.callB();
