@@ -1,0 +1,12 @@
+Create a Console Based Library Management System
+
+Required component:
+
+1.Add Item
+2.Register Member
+3.Borrow
+4.Return
+5.Waitlist
+6.List Items
+7.Search
+8.Export Reports
