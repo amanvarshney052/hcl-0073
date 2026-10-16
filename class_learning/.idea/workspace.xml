@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2257dd4a-064b-404f-94f1-f2343b08d735" name="Changes" comment="update">
+    <list default="true" id="2257dd4a-064b-404f-94f1-f2343b08d735" name="Changes" comment="Spring Basic">
       <change afterPath="$PROJECT_DIR$/src/seald_class/practice.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../CreatorStore/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CreatorStore/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sheild_class/practice.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -152,7 +151,15 @@
       <option name="project" value="LOCAL" />
       <updated>1791956289652</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Spring Basic">
+      <option name="closed" value="true" />
+      <created>1792127198404</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1792127198404</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -160,6 +167,7 @@
     <MESSAGE value="collection impl" />
     <MESSAGE value="collection framework" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="Spring Basic" />
+    <option name="LAST_COMMIT_MESSAGE" value="Spring Basic" />
   </component>
 </project>

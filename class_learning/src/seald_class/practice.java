@@ -1,4 +1,4 @@
-package sheild_class;
+package seald_class;
 
 sealed class Animal permits Dog, Cat {
     void sound() {
