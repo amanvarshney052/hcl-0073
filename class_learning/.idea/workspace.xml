@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2257dd4a-064b-404f-94f1-f2343b08d735" name="Changes" comment="update">
-      <change afterPath="$PROJECT_DIR$/src/stream_api/practice2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/seald_class/practice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CreatorStore/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CreatorStore/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sheild_class/practice.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +56,7 @@
     "Application.Test1.executor": "Run",
     "Application.abstract_class.executor": "Run",
     "Application.array_list.executor": "Run",
+    "Application.basics_obj_creation.executor": "Run",
     "Application.comparator_impl.executor": "Run",
     "Application.employeeAnalytics.executor": "Run",
     "Application.interface_.executor": "Run",
@@ -141,7 +144,15 @@
       <option name="project" value="LOCAL" />
       <updated>1791872911548</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="update">
+      <option name="closed" value="true" />
+      <created>1791956289652</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1791956289652</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
