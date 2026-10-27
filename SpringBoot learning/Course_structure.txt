@@ -1,0 +1,327 @@
+Spring Boot Development + Interview Master Course
+Aman, we’ll build this course from basic Spring Boot concepts to advanced, production-level backend development, with two goals throughout:
+1. Development: Learn how Spring Boot works internally and use it to build real-world applications.
+2. Interview preparation: Prepare for fresher and Java backend developer interviews, including conceptual questions, coding questions, debugging scenarios, and system-design discussions.
+The most important part is that we will not treat every module as a separate, disconnected tutorial. From Module 1 onward, every practice exercise will contribute to one continuously evolving project. By the end, you will have developed a backend application with database integration, authentication, testing, deployment, and production-oriented features.
+Since you already have a foundation in Java, we’ll use Java concepts where necessary and focus most of our time on applying them in Spring Boot.
+1. Our real-world project
+
+
+Project: Student Management & Academic Portal
+Main course project
+We’ll begin with a simple Student Management REST API and gradually evolve it into a backend for a complete academic portal.
+Core features
+- Manage students, courses, and enrollments.
+- Store and retrieve data using PostgreSQL.
+- Validate input and handle errors properly.
+- Implement login, roles, and permissions.
+- Add pagination, searching, sorting, and reporting.
+- Test, document, and deploy the application.
+
+
+
+Technology stack
+
+Java
+Language and OOP
+
+
+Spring Boot
+Backend framework
+
+
+PostgreSQL
+Relational database
+
+
+Docker
+Packaging and deployment
+
+
+Additional tools introduced progressively: Maven, Spring Data JPA, Hibernate, Bean Validation, Spring Security, JWT, JUnit 5, Mockito, Testcontainers, OpenAPI/Swagger, Git, CI/CD, and monitoring tools.
+
+We’ll use Java 21 LTS or Java 25 LTS, depending on your environment, and a compatible stable Spring Boot release. We’ll pin the actual versions when we set up the project rather than mixing incompatible versions throughout the course.
+2. Complete course roadmap: Basic to advanced
+The course is divided into 18 modules. Each module builds on the previous one, and the practice exercise adds a feature to the same Student Management & Academic Portal.
+Phase 1 — Foundations and first application
+Goal: Understand the Spring ecosystem and build your first working backend.
+
+00
+
+Module 0: Prerequisites and development environment
+Java revision, OOP, interfaces, exceptions, collections, annotations, Maven, IntelliJ IDEA/STS, Git, HTTP, JSON, and REST basics.
+Practice: Prepare your environment and test a sample Java application. Establish the Git repository for the course project.
+
+
+01
+
+Module 1: Introduction to Spring and Spring Boot
+Spring vs Spring Boot, IoC, dependency injection, beans, application context, auto-configuration, starters, embedded servers, and project structure.
+Practice: Create the project, run the first application, and add a basic health/status endpoint.
+
+
+02
+
+Module 2: Building REST APIs
+Controllers, @RestController, request mappings, HTTP methods, path variables, query parameters, request bodies, response entities, HTTP status codes, and Postman.
+Practice: Add student creation, retrieval, update, and deletion endpoints using temporary in-memory data.
+
+
+03
+
+Module 3: Layered architecture and dependency injection
+Controller-service-repository pattern, constructor injection, component scanning, @Component, @Service, @Repository, interfaces, DTOs, and separation of concerns.
+Practice: Refactor the student API into clean layers and introduce request/response DTOs.
+
+
+
+Phase 2 — Database and robust APIs
+Goal: Turn the initial API into a real application backed by persistent data.
+
+04
+
+Module 4: Database integration and Spring Data JPA
+JPA vs Hibernate vs JDBC, entities, repositories, primary keys, CRUD, derived queries, JPQL, native SQL, and database configuration.
+Practice: Replace temporary storage with PostgreSQL and persist student records.
+
+
+05
+
+Module 5: Entity relationships and database design
+One-to-one, one-to-many, many-to-one, many-to-many, owning side, cascading, fetch types, transactions, N+1 queries, and schema design.
+Practice: Add courses and enrollments, connect students to courses, and implement relationship-aware APIs.
+
+
+06
+
+Module 6: Validation and exception handling
+Bean Validation, @Valid, custom validation, @ControllerAdvice, @ExceptionHandler, consistent error responses, and correct HTTP status codes.
+Practice: Reject invalid student data and return consistent, meaningful error responses.
+
+
+07
+
+Module 7: Advanced REST API features
+Pagination, sorting, filtering, searching, projections, DTO mapping, API versioning, idempotency, and HTTP semantics.
+Practice: Build searchable student directories, paginated course listings, and filtered enrollment endpoints.
+
+
+
+Phase 3 — Security and professional testing
+Goal: Protect the API and verify that the application works reliably.
+
+08
+
+Module 8: Spring Security fundamentals
+Security filter chain, authentication vs authorization, password hashing, PasswordEncoder, roles, authorities, endpoint protection, and method security.
+Practice: Introduce administrator, faculty, and student permissions in the portal.
+
+
+09
+
+Module 9: JWT authentication and access control
+Login and registration, token structure, signature verification, expiration, stateless authentication, refresh-token concepts, CORS, CSRF, and security pitfalls.
+Practice: Add secure login and token-based access to protected student and course endpoints.
+
+
+10
+
+Module 10: Unit, integration, and API testing
+JUnit 5, Mockito, MockMvc, @WebMvcTest, @DataJpaTest, @SpringBootTest, test profiles, Testcontainers, and test coverage.
+Practice: Test service logic, database operations, validation, authentication, and API responses.
+
+
+11
+
+Module 11: Logging, configuration, and API documentation
+SLF4J and Logback, log levels, profiles, environment variables, externalized configuration, Actuator, health checks, OpenAPI, and Swagger UI.
+Practice: Separate development and production settings, add health endpoints, and document the API.
+
+
+
+Phase 4 — Advanced backend engineering
+Goal: Handle real production requirements, improve performance, and prepare for advanced interviews.
+
+12
+
+Module 12: Transactions and persistence internals
+@Transactional, propagation, isolation, rollback rules, dirty checking, persistence context, lazy loading, optimistic locking, and concurrency issues.
+Practice: Implement transactional enrollment, prevent conflicting updates, and handle failures without partial data changes.
+
+
+13
+
+Module 13: Performance and caching
+Query optimization, indexes, execution plans, connection pools, N+1 solutions, caching, Redis, cache invalidation, and profiling.
+Practice: Optimize frequently accessed student and course data and measure performance changes.
+
+
+14
+
+Module 14: Asynchronous processing and messaging
+@Async, executor configuration, CompletableFuture, scheduling, Spring events, message queues, RabbitMQ or Kafka fundamentals, retries, and idempotent consumers.
+Practice: Process notifications and background academic-report tasks without blocking normal API requests.
+
+
+15
+
+Module 15: Microservices and distributed systems
+Monolith vs microservices, service discovery, API gateways, declarative HTTP clients, centralized configuration, timeouts, retries, circuit breakers, distributed tracing, and eventual consistency.
+Practice: Extract a notification or reporting service from the portal and understand service-to-service communication.
+
+
+
+Phase 5 — Deployment and interview mastery
+
+16
+
+Module 16: Docker, CI/CD, and deployment
+Executable JARs, Dockerfiles, Docker Compose, database containers, Git workflows, automated builds and tests, CI/CD pipelines, environment-specific secrets, and cloud deployment fundamentals.
+Practice: Containerize and deploy the application using a reproducible configuration.
+
+
+17
+
+Module 17: Production readiness and system design
+Health checks, metrics, structured logging, tracing, graceful shutdown, resilience, database migrations, security hardening, backup strategy, scalability, and design trade-offs.
+Practice: Conduct a production-readiness review and design the portal for increasing traffic and data volume.
+
+
+18
+
+Module 18: Final project, code review, and interview preparation
+Architecture walkthrough, debugging, refactoring, feature changes, coding exercises, project explanation, Java/Spring Boot interview drills, and scenario-based system design.
+Practice: Complete a final technical review, demonstrate the project, and answer questions based on your own implementation.
+
+
+
+3. How the project will grow with every module
+This is the most important part of the course. Each exercise will have a practical purpose, and you will continue working on the same codebase rather than starting from scratch.
+Project development milestones
+1. Milestone 1 — Working REST API
+   Modules 1–3
+   Create the Spring Boot application, build student endpoints, separate controllers and services, and use DTOs.
+2. Milestone 2 — Persistent academic data
+   Modules 4–7
+   Integrate PostgreSQL, implement student-course relationships, validate inputs, handle errors, and add searching and pagination.
+3. Milestone 3 — Secure backend
+   Modules 8–11
+   Add user accounts, password hashing, authentication, JWT, role-based permissions, automated tests, logging, and API documentation.
+4. Milestone 4 — Production-oriented application
+   Modules 12–14
+   Improve transaction safety, optimize queries, introduce caching, and process background tasks and notifications.
+5. Milestone 5 — Scalable deployment
+   Modules 15–17
+   Explore service extraction, containerization, CI/CD, monitoring, reliability, and deployment.
+6. Milestone 6 — Interview-ready project
+   Module 18
+   Review architecture, fix deliberately introduced bugs, implement a change request, explain trade-offs, and practice defending your code in interviews.
+
+What the final application will contain
+Feature	Skills demonstrated
+Student CRUD	REST APIs, HTTP, layered architecture
+Course and enrollment management	JPA relationships, SQL, transactions
+Search and pagination	Query design, API usability
+Validation and error responses	Bean Validation, exception handling
+Login and permissions	Spring Security, JWT
+Automated tests	JUnit, Mockito, integration testing
+Performance optimization	SQL indexes, caching, profiling
+Background notifications	Async processing and messaging
+Service extraction	Microservices and distributed systems
+Deployment and monitoring	Docker, CI/CD, Actuator, observability
+Not every advanced feature needs to be part of the initial application. We will introduce each one when the underlying concepts are clear and explain when a simpler solution is preferable.
+4. Standard structure of every module
+Every module will follow the same learning pattern so that you learn concepts, implement them, and prepare to explain them in an interview.
+01
+
+Concept and fundamentals
+Definition, why the concept is needed, the problem it solves, and when to use it.
+
+
+02
+
+Internal working
+What Spring does behind the scenes, the execution flow, and important framework internals.
+
+
+03
+
+Code walkthrough
+Working Java examples, annotations, configuration, file structure, and line-by-line explanations.
+
+
+04
+
+Real-project implementation
+Apply the concept to the Student Management & Academic Portal and integrate it with existing code.
+
+
+05
+
+Debugging and improvements
+Common errors, broken-code exercises, refactoring, best practices, and feature-change scenarios.
+
+
+06
+
+Interview questions and answers
+Basic, intermediate, advanced, follow-up, coding, and scenario-based questions with explanations.
+
+
+07
+
+Practice assignment
+A hands-on task that extends the project, with acceptance criteria and test cases.
+
+
+08
+
+Revision and assessment
+A short quiz, key takeaways, common mistakes, and a checklist to verify your understanding.
+
+
+
+Interview preparation format
+For example, if we study dependency injection, you won't just memorize its definition. You will learn how to answer progressively deeper questions:
+- Basic: What is dependency injection?
+- Intermediate: What is the difference between constructor and field injection?
+- Advanced: How does Spring resolve dependencies and manage bean creation?
+- Scenario: What happens if two beans implement the same interface?
+- Coding: Refactor a class that manually creates its dependencies.
+- Follow-up: When would you use @Primary or @Qualifier?
+Answers will include the reasoning, relevant code, common misconceptions, and interview tips. We'll also practice explaining technical concepts in clear language, as you would in an actual interview.
+5. Practice rules and project standards
+Starting with Module 1, we will follow these rules:
+1. One project, one evolving codebase. We will add features instead of repeatedly rebuilding the application.
+2. Hands-on implementation. You will write code, run it, inspect responses, and debug failures.
+3. Professional structure. We will gradually introduce proper packages, DTOs, configuration, testing, and error handling.
+4. Database migrations. When database design becomes important, we'll use a migration tool such as Flyway instead of relying on ad hoc schema changes.
+5. Security from the beginning of security work. We won't store plaintext passwords or hardcode production secrets.
+6. Interview readiness. Every module ends with interview questions and answers, plus a practical assignment.
+7. Incremental review. When you share your code, we can review it, find bugs, explain the fixes, and extend the same project.
+6. Your progress tracker
+Course completion
+0%
+
+
+
+0 of 19 modules completed
+[ ] Module 0: Prerequisites and environment
+[ ] Module 1: Spring and Spring Boot fundamentals
+[ ] Module 2: REST APIs
+[ ] Module 3: Layered architecture and DI
+[ ] Module 4: Spring Data JPA and PostgreSQL
+[ ] Module 5: Entity relationships
+[ ] Module 6: Validation and exception handling
+[ ] Module 7: Advanced REST APIs
+[ ] Module 8: Spring Security
+[ ] Module 9: JWT authentication
+[ ] Module 10: Testing
+[ ] Module 11: Configuration and documentation
+[ ] Module 12: Transactions and persistence internals
+[ ] Module 13: Performance and caching
+[ ] Module 14: Async and messaging
+[ ] Module 15: Microservices
+[ ] Module 16: Docker and CI/CD
+[ ] Module 17: Production readiness
+[ ] Module 18: Final project and interviews

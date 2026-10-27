@@ -1,0 +1,110 @@
+What is a Controller in Spring Boot?
+A Controller is a component that receives HTTP requests from a client and sends back HTTP responses.
+For example, imagine your CreatorStore website has a React frontend. A customer clicks the "View Products" button.
+The frontend sends a request to your Spring Boot backend.
+The controller receives that request and coordinates the response.
+Common responsibilities include:
+- Receiving HTTP requests.
+- Reading request data, such as product IDs or customer details.
+- Calling the appropriate service method.
+- Returning data or an HTTP status code.
+- Mapping URLs to Java methods.
+A controller should generally handle HTTP communication, not contain all your business logic or database operations.
+
+
+What is @RequestMapping?
+Consider this annotation:
+@RequestMapping("/api/products")
+It establishes a common URL prefix for the controller's request-handling methods.
+
+Important controller annotations
+1. @GetMapping
+Used to handle HTTP GET requests.
+
+@GetMapping
+public List<Product> getAllProducts() {
+    return productService.getAllProducts();
+}
+2. @PostMapping
+Used to handle HTTP POST requests, commonly for creating resources.
+@PostMapping
+public Product createProduct(@RequestBody Product product) {
+    return productService.createProduct(product);
+}
+3. @PutMapping
+Used to handle HTTP PUT requests, commonly for replacing a resource or applying a full update.
+@PutMapping("/{id}")
+public Product updateProduct(
+        @PathVariable Long id,
+        @RequestBody Product product) {
+    return productService.updateProduct(id, product);
+}
+4. @DeleteMapping
+Used to handle HTTP DELETE requests.
+@DeleteMapping("/{id}")
+public void deleteProduct(@PathVariable Long id) {
+    productService.deleteProduct(id);
+}
+
+
+Understand @PathVariable
+Suppose the client requests:
+GET /api/products/15
+
+You want to retrieve product number 15.
+You can write:
+@GetMapping("/{id}")
+public Product getProductById(@PathVariable Long id) {
+    return productService.getProductById(id);
+}
+Here, @PathVariable extracts the value 15 from the URL and passes it into the id parameter.
+
+
+Understand @RequestBody
+When creating a product, the client may send JSON data in the request body.
+For example, a POST request might contain:
+{
+  "name": "Keyboard",
+  "price": 1000.00
+}
+
+The controller can receive this JSON as a Java object:
+@PostMapping
+public Product createProduct(@RequestBody Product product) {
+    return productService.createProduct(product);
+}
+
+@RequestBody tells Spring to read the HTTP request body and deserialize its JSON into the Product object.
+
+
+Understand @RequestParam
+Sometimes you want to pass information through query parameters rather than through the URL path or request body.
+For example:
+GET /api/products?name=Keyboard
+
+You can handle it with @RequestParam:
+@GetMapping("/search")
+public String searchProduct(@RequestParam String name) {
+    return "Searching for: " + name;
+}
+
+A request to /api/products/search?name=Keyboard would return:
+Searching for: Keyboard
+
+
+What is ResponseEntity?
+So far, our controller returns a Product or a List<Product> directly.
+But what if you want to control the HTTP status code and response headers?
+That's where ResponseEntity is useful.
+For example:
+@GetMapping("/{id}")
+public ResponseEntity<Product> getProductById(
+        @PathVariable Long id) {
+
+    Product product = productService.getProductById(id);
+
+    return ResponseEntity.ok(product);
+}
+
+
+This returns the product with HTTP status 200 OK, assuming the service successfully finds it.

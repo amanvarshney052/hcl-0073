@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2257dd4a-064b-404f-94f1-f2343b08d735" name="Changes" comment="update">
+      <change afterPath="$PROJECT_DIR$/src/seald_class/practice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CreatorStore/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CreatorStore/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sheild_class/practice.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;amanvarshney052&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/amanvarshney052/hcl-0073.git&quot;,
+    &quot;accountId&quot;: &quot;ad3d2df5-6629-4757-80c6-34fac030a147&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="3KRPHju5LqcEcNEg6xkY9bJxxbw" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.InvalidAge.executor": "Run",
+    "Application.MultiInheritance_Interface.executor": "Run",
+    "Application.Queue_Impl_LinkedList.executor": "Run",
+    "Application.Queue_Implementation.executor": "Run",
+    "Application.Queue_impl_priorityQueue.executor": "Run",
+    "Application.Set_impl.executor": "Run",
+    "Application.Test1.executor": "Run",
+    "Application.abstract_class.executor": "Run",
+    "Application.array_list.executor": "Run",
+    "Application.basics_obj_creation.executor": "Run",
+    "Application.comparator_impl.executor": "Run",
+    "Application.employeeAnalytics.executor": "Run",
+    "Application.interface_.executor": "Run",
+    "Application.iterator_use.executor": "Run",
+    "Application.j25.executor": "Run",
+    "Application.lambda_impl.executor": "Run",
+    "Application.linked_list.executor": "Run",
+    "Application.map_impl.executor": "Run",
+    "Application.practice.executor": "Run",
+    "Application.practice1.executor": "Run",
+    "Application.practice2.executor": "Run",
+    "Application.super_keyword.executor": "Run",
+    "Application.teacher.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/aman varshney/Desktop/hcl-0073/Class_learning",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2257dd4a-064b-404f-94f1-f2343b08d735" name="Changes" comment="" />
+      <created>1791517321792</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1791517321792</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Abstraction implementation">
+      <option name="closed" value="true" />
+      <created>1791522391053</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1791522391053</updated>
+    </task>
+    <task id="LOCAL-00002" summary="collection framework">
+      <option name="closed" value="true" />
+      <created>1791528446947</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1791528446947</updated>
+    </task>
+    <task id="LOCAL-00003" summary="update">
+      <option name="closed" value="true" />
+      <created>1791603839605</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1791603839605</updated>
+    </task>
+    <task id="LOCAL-00004" summary="update">
+      <option name="closed" value="true" />
+      <created>1791603947826</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1791603947826</updated>
+    </task>
+    <task id="LOCAL-00005" summary="collection impl">
+      <option name="closed" value="true" />
+      <created>1791617039042</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1791617039042</updated>
+    </task>
+    <task id="LOCAL-00006" summary="collection framework">
+      <option name="closed" value="true" />
+      <created>1791787159125</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1791787159125</updated>
+    </task>
+    <task id="LOCAL-00007" summary="update">
+      <option name="closed" value="true" />
+      <created>1791872911548</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1791872911548</updated>
+    </task>
+    <task id="LOCAL-00008" summary="update">
+      <option name="closed" value="true" />
+      <created>1791956289652</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1791956289652</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Abstraction implementation" />
+    <MESSAGE value="collection impl" />
+    <MESSAGE value="collection framework" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
+  </component>
+</project>

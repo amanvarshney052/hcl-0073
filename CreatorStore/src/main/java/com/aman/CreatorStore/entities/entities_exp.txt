@@ -1,0 +1,18 @@
+What is an Entity in Spring Boot?
+An Entity is a Java class that represents a table in a database.
+It allows your Java application to store, retrieve, update, and delete database records using objects instead of writing SQL queries for every operation.
+
+In Spring Boot, entities are commonly managed using JPA (Java Persistence API), with Hibernate acting as the ORM (Object-Relational Mapping) implementation.
+
+
+Why do we need entities?
+Imagine you are building CreatorStore, an online shopping application.
+A customer places an order for two products. Your application needs to store:
+- Customer name and email
+- Product details
+- Quantity of each product
+- Total price
+- Order status
+- Date and time the order was created
+Without entities, you could use JDBC and write SQL queries manually to insert, fetch, and update records.
+With entities and JPA, you can represent this data as Java objects and use repository methods to perform common database operations.

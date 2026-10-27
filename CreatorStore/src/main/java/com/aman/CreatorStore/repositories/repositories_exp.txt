@@ -1,0 +1,34 @@
+What is a Repository in Spring Boot?
+A Repository is a component responsible for accessing and managing data in a database.
+In Spring Boot, we commonly use Spring Data JPA to create repositories.
+It provides methods to save, retrieve, update, and delete entities with very little code.
+For example, suppose you want to retrieve all products from your CreatorStore database.
+Without Spring Data JPA, you might write SQL or JDBC code to execute a query and process the results.
+
+
+What is JpaRepository?
+JpaRepository is an interface provided by Spring Data JPA.
+It extends other repository interfaces and provides methods for common database operations.
+For ex: productRepository.findAll();
+
+
+How does Spring Boot create the repository implementation?
+This is an important interview concept.
+You might wonder:
+I created only an interface. Where is the actual implementation of save() and findAll()?
+
+When Spring Boot starts, repository scanning identifies eligible repository interfaces.
+Spring Data creates proxy implementations that delegate to the appropriate persistence infrastructure.
+
+without implementing findAll() yourself.
+Spring Boot's auto-configuration and component scanning help configure the infrastructure,
+provided the appropriate dependencies and application configuration are present.
+
+
+Dependency injection: How do you use a repository?
+Creating a repository interface is not enough; your service or controller needs access to its Spring-managed instance.
+The recommended approach is constructor injection.
+For example, create ProductService.java
+
+
+
