@@ -1,0 +1,44 @@
+@SpringBootApplication: Internal Working
+What is it?
+A convenience (composite) annotation placed on the main class of a Spring Boot app
+It bundles three annotations into one.
+@SpringBootConfiguration
+@EnableAutoConfiguration
+@ComponentScan
+
+@SpringBootApplication
+public class StudentManagementApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(StudentManagementApplication.class, args);
+    }
+}
+
+1. @SpringBootConfiguration
+Meta-annotated with @Configuration
+Lets you define beans in the main class using @Bean
+Only one is allowed per application (tests find it by searching upward through packages)
+
+2. @ComponentScan = “The Finder”
+Spring looks through your project and finds every class marked with @Controller, @Service, @Repository, or @Component.
+For each one, it creates an object (a bean).
+
+3. @EnableAutoConfiguration = “The Auto Setup”
+Spring looks at the libraries you added in pom.xml and sets things up for you.
+
+Added spring-boot-starter-web? Spring sets up Tomcat server for you.
+Added MongoDB starter? Spring sets up the MongoDB connection for you.
+
+Like buying a new phone that comes with everything pre-installed. You don’t configure each thing yourself.
+
+
+What Happens When the App Starts
+
+SpringApplication.run() does this in simple steps:
+
+Reads your settings (application.properties)
+Creates the Spring container (the “manager of objects”)
+Finds your classes (component scan)
+Adds the automatic setup (auto-configuration)
+Creates all objects and connects them to each other (dependency injection)
+Starts the Tomcat server
+App is ready, and you can open it in the browser or Postman

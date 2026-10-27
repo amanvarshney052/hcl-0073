@@ -1,0 +1,52 @@
+What is IoC?
+A design principle where the framework controls object creation and wiring, not your code
+Normally, you create and manage objects yourself using new. With IoC, you hand that control over to a container
+“Inversion” means the control flow is reversed: instead of your code calling the framework, the framework calls and manages your code.
+
+Without IoC (tight coupling):
+public class StudentController {
+    private StudentService service = new StudentService(); // you create it
+}
+
+With IoC (loose coupling):
+@RestController
+public class StudentController {
+    private final StudentService service;
+
+    public StudentController(StudentService service) { // Spring gives it to you
+        this.service = service;
+    }
+}
+
+IoC Container in Spring
+The Spring IoC Container creates objects (called beans), wires dependencies, manages their lifecycle, and destroys them
+It reads configuration from annotations, XML, or Java config
+
+Two Types of Containers:
+BeanFactory- Basic container, lazy loading, lightweight
+ApplicationContext-	Advanced container (extends BeanFactory), eager loading, supports events, internationalization, AOP. Most commonly used
+
+Important Annotations
+Annotation	          Purpose
+@Component	  -     Generic bean
+@Service	        Business logic layer bean
+@Repository	        Data access layer bean
+@Controller/@RestController	Web layer bean
+@Autowired	        Inject a dependency
+@Configuration+@Bean	Define beans manually in Java config
+
+Bean Scopes
+singleton (default): one instance per container
+prototype: new instance on every request
+request / session: one per HTTP request / session (web apps)
+
+Bean Lifecycle (Short)
+1. Container instantiates the bean
+2. Dependencies are injected
+3. @PostConstruct / init method runs
+4. Bean is ready to use
+5. @PreDestroy / destroy method runs on shutdown
+
+Common Error Linked to IoC
+NoSuchBeanDefinitionException / “No qualifying bean of type...” means Spring could not find a bean to inject.
+Usually caused by a missing @Service/@Component annotation, or the class being outside the package scanned by @SpringBootApplication.

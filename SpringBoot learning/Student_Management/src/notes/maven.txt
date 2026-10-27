@@ -1,0 +1,50 @@
+What is Maven?
+Build automation and dependency management tool for Java projects
+Developed by Apache
+Configured through a single file: pom.xml (Project Object Model)
+
+Why Use Maven?
+Dependency management: auto-downloads libraries and their transitive dependencies from Maven Central; no manual JAR handling
+Standard project structure: same layout for every project, understood by all IDEs and tools
+Build lifecycle: one command to compile, test, and package
+Consistent builds: same result on any machine or CI server
+Easy integration: works with IntelliJ, Eclipse, Jenkins, Spring Boot
+
+Key Parts of pom.xml
+Element	Purpose
+groupId	Organization/package name (e.g., com.example)
+artifactId	Project name
+version	Project version
+<dependencies>	Libraries the project needs
+<plugins>	Extra build capabilities (e.g., spring-boot-maven-plugin)
+<properties>	Settings like Java version
+Maven Repositories
+Local: ~/.m2/repository on your machine
+Central: public repository at Maven Central
+Remote: company or third-party private repositories
+
+Lookup order: local → central/remote
+
+Build Lifecycle (Main Phases)
+Command	What it does
+mvn clean	Deletes the target/ folder
+mvn compile	Compiles source code
+mvn test	Runs unit tests
+mvn package	Creates JAR/WAR file
+mvn install	Copies package to local repository
+mvn deploy	Pushes package to remote repository
+
+Phases run in order, so mvn package automatically runs compile and test first.
+
+Dependency Example
+xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+
+Key Takeaways
+pom.xml is the heart of every Maven project
+Maven follows convention over configuration
+Dependencies are declared, not manually downloaded
+No need to upload JARs to GitHub; Maven fetches them on build
