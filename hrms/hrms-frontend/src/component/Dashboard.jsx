@@ -1,133 +1,133 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import 'bootstrap/dist/css/bootstrap.min.css'
+
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { apiRequest } from '../api';
+
 
 function Dashboard() {
-  const navigate = useNavigate()
-  const [currentUser, setCurrentUser] = useState(null)
-  const [employees, setEmployees] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [fetchError, setFetchError] = useState('')
+  const navigate = useNavigate();
+
+  const [employee, setEmployee] = useState(null);
+  const [employees, setEmployees] = useState([]);
+  const [loadingEmployees, setLoadingEmployees] = useState(false);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    const stored = localStorage.getItem('user')
-    if (stored) {
-      try {
-        setCurrentUser(JSON.parse(stored))
-      } catch (e) {
-        console.error('Failed to parse user from localStorage', e)
-      }
-    }
-    fetchEmployees()
-  }, [])
+    const savedEmployee = localStorage.getItem('employee');
 
-  async function fetchEmployees() {
-    setLoading(true)
-    setFetchError('')
+    if (!savedEmployee) {
+      navigate('/login', { replace: true });
+      return;
+    }
+
     try {
-      const res = await fetch('http://localhost:8080/getEmp')
-      if (res.ok) {
-        const data = await res.json()
-        setEmployees(data)
-      } else {
-        setFetchError('Failed to fetch employee list.')
-      }
+      setEmployee(JSON.parse(savedEmployee));
+    } catch {
+      localStorage.removeItem('employee');
+      navigate('/login', { replace: true });
+    }
+  }, [navigate]);
+
+  async function loadEmployees() {
+    setLoadingEmployees(true);
+    setError('');
+
+    try {
+      const data = await apiRequest('/v1/user/getEmp');
+      setEmployees(data);
     } catch (err) {
-      setFetchError('Backend server is not responding for /getEmp.')
+      setError(err.message || 'Unable to load employees');
     } finally {
-      setLoading(false)
+      setLoadingEmployees(false);
     }
   }
 
-  function handleLogout() {
-    localStorage.removeItem('user')
-    navigate('/login')
+  function logout() {
+    localStorage.removeItem('employee');
+    navigate('/login', { replace: true });
+  }
+
+  if (!employee) {
+    return <div className="container mt-5">Loading dashboard...</div>;
   }
 
   return (
-    <div className="container mt-4">
-      {/* Header */}
-      <div className="d-flex justify-content-between align-items-center pb-3 mb-4 border-bottom">
-        <div>
-          <h2 className="mb-0">HRMS Portal Dashboard</h2>
-          <small className="text-muted">Welcome, {currentUser?.emp_name || currentUser?.empName || 'Employee'}!</small>
+    <div className="dashboard-page">
+      
+
+      <div className="card shadow-sm mb-4">
+        <div className="card-body">
+          <h4>Welcome, {employee.emp_name || 'Employee'}!</h4>
+          <hr />
+
+          <p>
+            <strong>Employee ID:</strong> {employee.employeeId}
+          </p>
+          <p>
+            <strong>Name:</strong> {employee.emp_name || 'Not provided'}
+          </p>
+          <p>
+            <strong>Email:</strong> {employee.email}
+          </p>
+          <p>
+            <strong>Designation:</strong>
+            {' '}{employee.designation || 'Not provided'}
+          </p>
+          <p>
+            <strong>Tech Stack:</strong>
+            {' '}{employee.prog_stack || 'Not provided'}
+          </p>
         </div>
-        <button className="btn btn-outline-danger" onClick={handleLogout}>
-          Logout
-        </button>
       </div>
 
-      {/* User Info Card */}
-      {currentUser && (
-        <div className="card shadow-sm mb-4">
-          <div className="card-header bg-primary text-white">
-            <h5 className="mb-0">Your Profile</h5>
-          </div>
-          <div className="card-body">
-            <div className="row">
-              <div className="col-md-3 mb-2">
-                <strong>Employee ID:</strong> {currentUser.emp_id || currentUser.empId || 'N/A'}
-              </div>
-              <div className="col-md-3 mb-2">
-                <strong>Name:</strong> {currentUser.emp_name || currentUser.empName || 'N/A'}
-              </div>
-              <div className="col-md-3 mb-2">
-                <strong>Email:</strong> {currentUser.email || 'N/A'}
-              </div>
-              <div className="col-md-3 mb-2">
-                <strong>Designation:</strong> {currentUser.designation || 'N/A'}
-              </div>
-              <div className="col-md-6 mb-2">
-                <strong>Tech Stack:</strong> {currentUser.progStack || 'N/A'}
-              </div>
-            </div>
-          </div>
+      <div className="d-flex flex-wrap gap-2 mb-3">
+        <button
+          className="btn btn-primary"
+          onClick={loadEmployees}
+          disabled={loadingEmployees}
+        >
+          {loadingEmployees ? 'Loading...' : 'View All Employees'}
+        </button>
+
+        <Link to="/register" className="btn btn-outline-primary">
+          Register Employee
+        </Link>
+        <Link to="/attendance" className="btn btn-success">
+          Manage Attendance
+        </Link>
+      </div>
+
+      {error && <div className="alert alert-danger">{error}</div>}
+
+      {employees.length > 0 && (
+        <div className="table-responsive">
+          <table className="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Designation</th>
+                <th>Tech Stack</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {employees.map((item) => (
+                <tr key={item.emp_id ?? item.empId}>
+                  <td>{item.emp_id ?? item.empId}</td>
+                  <td>{item.emp_name ?? item.empName}</td>
+                  <td>{item.email}</td>
+                  <td>{item.designation}</td>
+                  <td>{item.prog_stack ?? item.progStack}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       )}
-
-      {/* Employees Table */}
-      <div className="card shadow-sm">
-        <div className="card-header d-flex justify-content-between align-items-center">
-          <h5 className="mb-0">All Registered Employees</h5>
-          <button className="btn btn-sm btn-outline-secondary" onClick={fetchEmployees} disabled={loading}>
-            {loading ? 'Refreshing...' : 'Refresh List'}
-          </button>
-        </div>
-        <div className="card-body">
-          {fetchError && <div className="alert alert-warning">{fetchError}</div>}
-          {employees.length === 0 && !loading && (
-            <p className="text-muted mb-0">No employees found or server not connected.</p>
-          )}
-          {employees.length > 0 && (
-            <div className="table-responsive">
-              <table className="table table-hover table-striped align-middle">
-                <thead className="table-dark">
-                  <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Designation</th>
-                    <th>Tech Stack</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {employees.map((emp) => (
-                    <tr key={emp.emp_id || emp.empId}>
-                      <td>{emp.emp_id || emp.empId}</td>
-                      <td>{emp.emp_name || emp.empName}</td>
-                      <td>{emp.email}</td>
-                      <td>{emp.designation}</td>
-                      <td>{emp.progStack}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
-        </div>
-      </div>
     </div>
-  )
+  );
 }
 
-export default Dashboard
+export default Dashboard;

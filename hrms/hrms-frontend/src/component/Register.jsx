@@ -1,124 +1,156 @@
+
 import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link, useNavigate } from 'react-router-dom';
+import { apiRequest } from '../api';
+import AuthLayout from './AuthLayout';
 
 function Registration() {
-  const [Name, setName] = useState('');
-  const [Designation, setDesignation] = useState('');
-  const [Stack, setStack] = useState('');
-  const [Email, setEmail] = useState('');
-  const [Password, setPassword] = useState('');
+  const [form, setForm] = useState({
+    name: '',
+    designation: '',
+    stack: '',
+    email: '',
+    password: '',
+  });
+
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+
+  function handleChange(e) {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  }
 
   async function sendData(e) {
     e.preventDefault();
+    setError('');
+    setLoading(true);
 
     try {
-      const server = await fetch(
-        'http://localhost:8080/v1/user/register',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            emp_name: Name,
-            designation: Designation,
-            prog_stack: Stack,
-            email: Email,
-            password: Password
-          })
-        }
-      );
+      await apiRequest('/v1/user/register', {
+        method: 'POST',
+        body: JSON.stringify({
+          emp_name: form.name,
+          designation: form.designation,
+          prog_stack: form.stack,
+          email: form.email,
+          password: form.password,
+        }),
+      });
 
-      const data = await server.json();
+      alert('Employee registered successfully. Please log in.');
 
-      if (server.ok) {
-        alert('Employee Registered Successfully');
-        setName('');
-        setDesignation('');
-        setStack('');
-        setEmail('');
-        setPassword('');
-      } else {
-        alert('Error: ' + (data.message || 'Registration failed'));
-      }
-    } catch (error) {
-      console.log(error);
-      alert('Unable to connect to Spring Boot');
+      navigate('/login', { replace: true });
+    } catch (err) {
+      setError(err.message || 'Registration failed');
+    } finally {
+      setLoading(false);
     }
   }
 
   return (
-    <div className="container mt-4">
-      <h2 className="text-center mb-4">Employee Registration</h2>
+  <AuthLayout
+    title="Create your account"
+    subtitle="Enter your details to join the HCL HRMS workspace."
+    footer={
+      <>
+        Already registered? <Link to="/login">Sign in</Link>
+      </>
+    }
+  >
+    {error && (
+      <div className="alert alert-danger" role="alert">
+        {error}
+      </div>
+    )}
 
-      <form onSubmit={sendData}>
-        <div className="form-group mb-3">
-          <label>Employee Name</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Enter employee name"
-            value={Name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </div>
+    <form onSubmit={sendData}>
+      <div className="mb-3">
+        <label htmlFor="name" className="form-label">Employee Name</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          className="form-control"
+          placeholder="Enter employee name"
+          value={form.name}
+          onChange={handleChange}
+          autoComplete="name"
+          required
+        />
+      </div>
 
-        <div className="form-group mb-3">
-          <label>Employee Designation</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Enter designation"
-            value={Designation}
-            onChange={(e) => setDesignation(e.target.value)}
-            required
-          />
-        </div>
+      <div className="mb-3">
+        <label htmlFor="designation" className="form-label">Designation</label>
+        <input
+          id="designation"
+          name="designation"
+          className="form-control"
+          placeholder="e.g. Software Engineer"
+          value={form.designation}
+          onChange={handleChange}
+          required
+        />
+      </div>
 
-        <div className="form-group mb-3">
-          <label>Employee Tech Stack</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Enter tech stack"
-            value={Stack}
-            onChange={(e) => setStack(e.target.value)}
-            required
-          />
-        </div>
+      <div className="mb-3">
+        <label htmlFor="stack" className="form-label">Tech Stack</label>
+        <input
+          id="stack"
+          name="stack"
+          className="form-control"
+          placeholder="e.g. Java, Spring Boot, React"
+          value={form.stack}
+          onChange={handleChange}
+          required
+        />
+      </div>
 
-        <div className="form-group mb-3">
-          <label>Email</label>
-          <input
-            type="email"
-            className="form-control"
-            placeholder="Enter email"
-            value={Email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
+      <div className="mb-3">
+        <label htmlFor="email" className="form-label">Email address</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          className="form-control"
+          placeholder="you@company.com"
+          value={form.email}
+          onChange={handleChange}
+          autoComplete="email"
+          required
+        />
+      </div>
 
-        <div className="form-group mb-3">
-          <label>Password</label>
-          <input
-            type="password"
-            className="form-control"
-            placeholder="Enter password"
-            value={Password}
-            onChange={(e) => setPassword(e.target.value)}
-            minLength={8}
-            required
-          />
-        </div>
+      <div className="mb-3">
+        <label htmlFor="password" className="form-label">Password</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          className="form-control"
+          placeholder="At least 8 characters"
+          value={form.password}
+          onChange={handleChange}
+          minLength={8}
+          autoComplete="new-password"
+          required
+        />
+      </div>
 
-        <button type="submit" className="btn btn-primary w-100">
-          Submit
-        </button>
-      </form>
-    </div>
-  );
+      <button
+        type="submit"
+        className="btn btn-primary w-100"
+        disabled={loading}
+      >
+        {loading ? 'Creating account...' : 'Create account'}
+      </button>
+    </form>
+  </AuthLayout>
+);
 }
 
 export default Registration;

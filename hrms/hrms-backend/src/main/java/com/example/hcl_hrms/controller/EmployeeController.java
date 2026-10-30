@@ -1,3 +1,4 @@
+
 package com.example.hcl_hrms.controller;
 
 import com.example.hcl_hrms.entity.Employee;
@@ -17,20 +18,19 @@ public class EmployeeController {
 
     private final EmployeeService employeeService;
 
-    // Constructor injection
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
 
     // 1. Welcome endpoint
-    @GetMapping({"/", ""})
+    @GetMapping({"", "/"})
     public ResponseEntity<Map<String, String>> home() {
         return ResponseEntity.ok(
                 Map.of("message", "Welcome to ABES HRMS Portal")
         );
     }
 
-    // 2. Add a new employee
+    // 2. Add employee
     @PostMapping("/addEmp")
     public ResponseEntity<Map<String, String>> addEmployee(
             @RequestBody Employee employee) {
@@ -66,65 +66,35 @@ public class EmployeeController {
     // 4. Get all employees
     @GetMapping("/getEmp")
     public ResponseEntity<List<Employee>> getAllEmployees() {
-
-        List<Employee> employees =
-                employeeService.getAllEmployees();
-
-        return ResponseEntity.ok(employees);
+        return ResponseEntity.ok(
+                employeeService.getAllEmployees()
+        );
     }
 
-    // 5. Find employee by ID
+    // 5. Get employee by ID
     @GetMapping("/findbyid/{id}")
     public ResponseEntity<?> getEmployeeById(
             @PathVariable("id") long id) {
 
         if (id <= 0) {
-            return ResponseEntity.badRequest()
-                    .body(Map.of(
-                            "message",
-                            "Employee ID must be positive"
-                    ));
+            return ResponseEntity.badRequest().body(
+                    Map.of("message", "Employee ID must be positive")
+            );
         }
 
-        Employee employee =
-                employeeService.getEmployeeById(id);
+        Employee employee = employeeService.getEmployeeById(id);
 
         if (employee == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body(Map.of(
-                            "message",
-                            "Employee not found with ID: " + id
-                    ));
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
+                    Map.of("message",
+                            "Employee not found with ID: " + id)
+            );
         }
 
         return ResponseEntity.ok(employee);
     }
 
-    // 6. Delete employee by ID
-    @DeleteMapping("/deleteEmp/{id}")
-    public ResponseEntity<Map<String, String>> deleteEmployee(
-            @PathVariable("id") long id) {
-
-        if (id <= 0) {
-            return ResponseEntity.badRequest()
-                    .body(Map.of(
-                            "message",
-                            "Employee ID must be positive"
-                    ));
-        }
-
-        String result =
-                employeeService.deleteEmployeeById(id);
-
-        if (result.startsWith("Employee not found")) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body(Map.of("message", result));
-        }
-
-        return ResponseEntity.ok(Map.of("message", result));
-    }
-
-    // 7. Update employee by ID
+    // 6. Update employee
     @PutMapping("/updateEmp/{id}")
     public ResponseEntity<Map<String, String>> updateEmployee(
             @PathVariable("id") long id,
@@ -146,44 +116,25 @@ public class EmployeeController {
         }
     }
 
-    // 8. Login employee
-    @PostMapping("/login")
-    public ResponseEntity<?> login(
-            @RequestBody Map<String, String> credentials) {
+    // 7. Delete employee
+    @DeleteMapping("/deleteEmp/{id}")
+    public ResponseEntity<Map<String, String>> deleteEmployee(
+            @PathVariable("id") long id) {
 
-        if (credentials == null) {
-            return ResponseEntity.badRequest()
-                    .body(Map.of(
-                            "message",
-                            "Email and password are required"
-                    ));
+        if (id <= 0) {
+            return ResponseEntity.badRequest().body(
+                    Map.of("message", "Employee ID must be positive")
+            );
         }
 
-        String email = credentials.get("email");
-        String password = credentials.get("password");
+        String result = employeeService.deleteEmployeeById(id);
 
-        if (email == null || email.isBlank()
-                || password == null || password.isBlank()) {
-
-            return ResponseEntity.badRequest()
-                    .body(Map.of(
-                            "message",
-                            "Email and password are required"
-                    ));
+        if (result.startsWith("Employee not found")) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(Map.of("message", result));
         }
 
-        Employee employee =
-                employeeService.loginEmployee(email, password);
-
-        if (employee == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(Map.of(
-                            "message",
-                            "Invalid email or password"
-                    ));
-        }
-
-        return ResponseEntity.ok(employee);
+        return ResponseEntity.ok(Map.of("message", result));
     }
 
     // Common error response
